@@ -191,7 +191,7 @@ namespace ASB //ASB - Automated Snap Bot
                         //Console.WriteLine("here9");
                         click("/html/body/main/div[1]/div[3]/div/div/div/div[2]/div[1]/div/div/div/div/div[2]/div[2]/button[2]","Send button");
 
-                        for(int i = 1; i <= 7; i++ ){
+                        for(int i = 1; i <= 8; i++ ){
                             click($"/html/body/main/div[1]/div[3]/div/div/div/div[2]/div[1]/div/div/div/div/div[1]/div/form/div/ul/ul/li[" + i + "]/div","Friends button");
                         }
 
