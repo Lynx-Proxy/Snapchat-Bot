@@ -45,12 +45,13 @@ namespace ASB //ASB - Automated Snap Bot
 
             var driver = new ChromeDriver();
 
-            void waitandclick(string xpath, string? btn){
+            async void waitandclick(string xpath, string? btn){
                 bool check = false;
                 if(btn != null){
                     Console.WriteLine($"Waiting for {btn}");
                 }
                 while(!check){
+                    //await Task.Delay(500);
                     try{
                         //Console.WriteLine("test");
                         driver.FindElement(By.XPath(xpath)).Click();
@@ -61,7 +62,28 @@ namespace ASB //ASB - Automated Snap Bot
                     }
                     catch(NoSuchElementException){}
                     catch(StaleElementReferenceException){}
+                    catch(ElementClickInterceptedException){}
+                    catch(ElementNotInteractableException){}
+                    catch(NullReferenceException){}
                 }
+            }
+
+            async void click(string xpath, string? btn){
+                
+                    //await Task.Delay(500);
+                    try{
+                        //Console.WriteLine("test");
+                        driver.FindElement(By.XPath(xpath)).Click();
+
+                        Console.WriteLine($"clicked {btn}");
+
+                    }
+                    catch(NoSuchElementException){}
+                    catch(StaleElementReferenceException){}
+                    catch(ElementClickInterceptedException){}
+                    catch(ElementNotInteractableException){}
+                    catch(NullReferenceException){}
+                    catch(WebDriverException){}
             }
 
             void waitandtype(string xpath, string text){
@@ -163,15 +185,15 @@ namespace ASB //ASB - Automated Snap Bot
                     while(true){
                         //Console.WriteLine("here7");
                         //Console.WriteLine("here8");
-                        waitandclick("/html/body/main/div[1]/div[3]/div/div/div/div[2]/div[1]/div/div/div/div/div/div[2]/div/div/div[1]/button[1]","Take picture button");
+                        click("/html/body/main/div[1]/div[3]/div/div/div/div[2]/div[1]/div/div/div/div/div/div[2]/div/div/div[1]/button[1]","Take picture button");
                         //Console.WriteLine("here9");
-                        waitandclick("/html/body/main/div[1]/div[3]/div/div/div/div[2]/div[1]/div/div/div/div/div[2]/div[2]/button[2]","Send button");
+                        click("/html/body/main/div[1]/div[3]/div/div/div/div[2]/div[1]/div/div/div/div/div[2]/div[2]/button[2]","Send button");
 
-                        for(int i = 1; i <= 8; i++ ){
-                            waitandclick($"/html/body/main/div[1]/div[3]/div/div/div/div[2]/div[1]/div/div/div/div/div[1]/div/form/div/ul/ul/li[" + i + "]/div","Friends button");
+                        for(int i = 1; i <= 7; i++ ){
+                            click($"/html/body/main/div[1]/div[3]/div/div/div/div[2]/div[1]/div/div/div/div/div[1]/div/form/div/ul/ul/li[" + i + "]/div","Friends button");
                         }
 
-                        waitandclick("/html/body/main/div[1]/div[3]/div/div/div/div[2]/div[1]/div/div/div/div/div[1]/div/form/div[2]/button", "Send button");
+                        click("/html/body/main/div[1]/div[3]/div/div/div/div[2]/div[1]/div/div/div/div/div[1]/div/form/div[2]/button", "Send button");
                     }
 
                 case "":
