@@ -35,7 +35,7 @@ namespace ASB //ASB - Automated Snap Bot
                     sw.Close();
                 }
                 Console.WriteLine("Configure newly created config file");
-                Console.WriteLine("App clossing in 10 seconds");
+                Console.WriteLine("App closing in 10 seconds");
                 await Task.Delay(10000);
                 Environment.Exit(0);
             }
